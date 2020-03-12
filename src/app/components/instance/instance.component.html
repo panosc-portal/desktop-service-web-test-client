@@ -1,0 +1,101 @@
+<div class="remote-desktop-container" *ngIf="manager">
+    <ngx-remote-desktop [manager]="manager">
+
+        <ngx-remote-desktop-toolbar-item align="left" [hidden]="!manager.isConnected()" (click)="handleScreenshot()">
+            <clr-icon shape="printer"></clr-icon>
+            Take screenshot
+        </ngx-remote-desktop-toolbar-item>
+
+        <ngx-remote-desktop-toolbar-item
+            [hidden]="!manager.isConnected() || instance?.membership.isRole('GUEST')"
+            (click)="handleClipboard()"
+            align="left">
+            <clr-icon shape="clipboard"></clr-icon>
+            Clipboard
+        </ngx-remote-desktop-toolbar-item>
+
+        <ngx-remote-desktop-toolbar-item
+            [hidden]="!manager.isConnected() || instance?.membership.isRole('GUEST')"
+            (click)="handleKeyboard()"
+            align="left">
+            <clr-icon shape="keyboard"></clr-icon>
+            Keyboard
+        </ngx-remote-desktop-toolbar-item>
+
+        <ngx-remote-desktop-toolbar-item
+            [hidden]="manager.isFullScreen() || !manager.isConnected()"
+            (click)="handleEnterFullScreen()"
+            align="right">
+            <clr-icon shape="resize-up"></clr-icon>
+            Enter full screen
+        </ngx-remote-desktop-toolbar-item>
+
+        <ngx-remote-desktop-toolbar-item
+            [hidden]="!manager.isFullScreen() || !manager.isConnected()"
+            (click)="handleExitFullScreen()"
+            align="right">
+            <clr-icon shape="resize-down"></clr-icon>
+            Exit full screen
+        </ngx-remote-desktop-toolbar-item>
+
+        <ngx-remote-desktop-connecting-message>
+            <div class="ngx-remote-desktop-message-body">
+                <div class="blankslate">
+                    <div class="title">
+                        <span class="spinner"></span>
+                        <h3>Connecting to the instance</h3>
+                    </div>
+                    <div class="description">
+                        <p>This could take a few moments.</p>
+                    </div>
+                </div>
+            </div>
+        </ngx-remote-desktop-connecting-message>
+
+        <ngx-remote-desktop-disconnected-message>
+            <div class="ngx-remote-desktop-message-body">
+                <div class="blankslate">
+                    <div class="title">
+                        <clr-icon shape="disconnect"></clr-icon>
+                        <h3>Disconnected from the instance</h3>
+                    </div>
+                    <div class="description">
+                        <p>You are not connected to the instance</p>
+                    </div>
+                    <div class="actions">
+                        <button class="btn btn-outline" (click)="handleConnect()">Connect to the instance</button>
+                    </div>
+                </div>
+            </div>
+        </ngx-remote-desktop-disconnected-message>
+
+        <ngx-remote-desktop-error-message>
+            <div class="ngx-remote-desktop-message-body">
+                <div class="blankslate">
+                    <div class="title">
+                        <clr-icon shape="error-standard"></clr-icon>
+                        <div *ngIf="ownerNotConnected">
+                            <h3>Owner disconnected</h3>
+                        </div>
+                        <div *ngIf="!ownerNotConnected">
+                            <h3>Connection error</h3>
+                        </div>
+                    </div>
+                    <div class="description">
+                        <div *ngIf="ownerNotConnected">
+                            <p>The owner of the instance isn't currently connected.<br>You can only access their desktop while they are connected. Please try again later.</p>
+
+                        </div>
+                        <div *ngIf="!ownerNotConnected">
+                            <p>There was an error connecting to the instance or the connection has been terminated</p>
+
+                        </div>
+                    </div>
+                    <div class="actions">
+                        <button class="btn btn-outline" (click)="handleConnect()">Connect to the instance</button>
+                    </div>
+                </div>
+            </div>
+        </ngx-remote-desktop-error-message>
+    </ngx-remote-desktop>
+</div>

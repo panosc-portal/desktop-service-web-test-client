@@ -1,0 +1,26 @@
+<h1 mat-dialog-title>Clipboard</h1>
+<div mat-dialog-content>
+    Text copied/cut within the remote desktop will appear here.
+    Sending the text below will affect the remote desktop clipboard.
+    <form style="width: 100%">
+        <ngx-codemirror
+            style="width: 100%;"
+            [(ngModel)]="text"
+            name="text"
+            [options]="{
+                lineNumbers: true,
+                theme: 'material',
+                mode: 'text/plain'
+            }">
+        </ngx-codemirror>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" (click)="onNoClick()" class="btn btn-outline">Cancel</button>
+    <button type="button"
+            class="btn btn-primary"
+            [mat-dialog-close]="text"
+            [disabled]="text.length === 0">
+        Send to remote desktop clipboard
+    </button>
+</div>

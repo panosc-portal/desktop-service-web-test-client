@@ -1,0 +1,326 @@
+$fa-font-path: "../../../node_modules/font-awesome/fonts";
+$clr-header-height: 1.5rem;
+$clr-action-blue: rgb(0, 82, 204);
+$clr-green: #7bc043;
+@import "~@clr/ui/src/utils/dependencies.clarity"; // Includes light theme
+@import "~@ng-select/ng-select/themes/default.theme.css";
+
+// @import './theme.scss';
+// $clr-btn-primary-bg-color: rgb(0, 82, 204);
+// $clr-btn-primary-border-color:$clr-btn-primary-bg-color;
+// $clr-btn-primary-hover-bg-color: #0065ff; // hover-background-color
+// $clr-btn-primary-hover-color: whitek; // hover-color
+// $clr-btn-primary-box-shadow-color: #0065ab; // active-box-shadow-color
+// $clr-nav-active-box-shadow-color: $clr-btn-primary-bg-color;
+
+
+// Clarity Component SCSS
+@import "~@clr/ui/src/utils/components.clarity";
+
+@import '~@clr/icons/clr-icons.css';
+@import '~@illgrenoble/ngx-remote-desktop/release/themes/default.css';
+@import '~font-awesome/scss/font-awesome';
+.logo {
+    width: 45px;
+    margin-right: 10px;
+}
+
+.header .branding {
+    min-width: 5rem;
+
+    .title {
+        font-weight: bold;
+    }
+}
+
+.datagrid-cell {
+    word-break: break-all;
+}
+
+.datagrid {
+    margin-top: 10px;
+}
+
+.ngx-remote-desktop-status-bar {
+    line-height: 19px;
+}
+
+.main-container {
+    height: auto !important;
+}
+
+
+.datagrid-placeholder-image {
+    width: 0 !important;
+    height: 0 !important;
+    background-image: none !important;
+    margin: 0 !important;
+}
+
+.swal2-content {
+    font-size: 0.8rem !important;
+}
+
+.swal2-title {
+    font-size: 1.1rem !important;
+}
+
+@import '~codemirror/lib/codemirror.css';
+@import '~codemirror/theme/material.css';
+@import '~@angular/material/theming'; // Plus imports for other components in your app.
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core(); // Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://www.google.com/design/spec/style/color.html
+$candy-app-primary: mat-palette($mat-blue);
+$candy-app-accent: mat-palette($mat-orange, A200, A100, A400); // The warn palette is optional (defaults to red).
+$candy-app-warn: mat-palette($mat-red); // Create the theme object (a Sass map containing all of the palettes).
+$candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent, $candy-app-warn); // Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($candy-app-theme);
+.mat-dialog-container-semi-transparent {
+    opacity: 0.87;
+}
+
+@import '~ng-snotify/styles/material.css';
+
+.hotkeys-keys {
+    text-align: right;
+
+    .hotkeys-key {
+        display: inline-block;
+        color: #333;
+        background-color: #EDEDED;
+        border: 1px solid #333;
+        text-align: center;
+        margin-right: 5px;
+        margin-left: 5px;
+        padding: 2px 4px;
+        font-size: 1em;
+
+        &--dark {
+            background-color: #333;
+            color: #fff;
+            box-shadow: inset 0 1px 0 #666, 0 1px 0 #bbb;
+            border-radius: 3px;
+        }
+    }
+
+    .hotkeys-text {
+        font-size: 1em;
+    }
+}
+
+.ngx-remote-desktop-status-bar-item:not(:last-child) {
+    flex: 1;
+}
+
+.main-container {
+    background: white;
+}
+
+
+$navigation-sidebar-background-color: #0747a6;
+$navigation-sidebar-border-color: #002538;
+$navigation-sidebar-item-color: white;
+$navigation-sidebar-item-hover-color: rgba(255, 255, 255, 1);
+$navigation-sidebar-width: 75px;
+$navigation-sidebar-width-expanded: 120px;
+.navigation-sidebar {
+    &--expanded {
+        width: $navigation-sidebar-width-expanded;
+    }
+
+    font-family: Metropolis,
+    'Avenir Next',
+    'Helvetica Neue',
+    Arial,
+    sans-serif;
+    font-size: 20px;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    background: $navigation-sidebar-background-color;
+    font-weight: 700;
+    position: fixed;
+    top: 0px;
+    left: 0;
+    width: $navigation-sidebar-width;
+    height: 100%;
+    z-index: 1000;
+    flex-flow: column wrap;
+    border-bottom: none;
+    border-right: 1px solid $navigation-sidebar-border-color;
+
+    .navigation-sidebar-items {
+        display: flex;
+        flex-direction: column;
+        padding-left: 0;
+        margin-bottom: 0;
+        list-style: none;
+
+        .navigation-sidebar-item {
+            > .navigation-sidebar-item-name {
+                font-size: 0.5rem;
+            }
+
+            > .navigation-sidebar-item-icon {
+                clr-icon {
+                    width: 24px;
+                    height: 24px;
+                }
+            }
+
+            line-height: 18px;
+            text-align: center;
+            text-decoration: none;
+            user-select: none;
+            padding: 0.5em 0em 0.5em 0em;
+            color: $navigation-sidebar-item-color;
+            font-weight: 400;
+
+            &.navigation-sidebar-item-logo {
+                position: relative;
+                height: 64px;
+
+                img {
+                    width: 56px;
+                    position: absolute;
+                    left: 9px;
+                    top: 9px;
+                }
+            }
+
+            &:hover {
+                cursor: pointer;
+                color: $navigation-sidebar-item-hover-color;
+            }
+        }
+    }
+}
+
+.information-panel {
+    margin: 0px 0px 10px 0px;
+    border: 2px solid #f0f0f0;
+    border-radius: 5px;
+    padding: 10px;
+    background: #f8fdff;
+
+    .information-panel-title {
+        color: #000;
+        margin: 0px 0px 10px 0px;
+    }
+
+    .information-panel-body {
+        color: #767a7b;
+    }
+}
+
+.blankslate {
+    position: relative;
+    padding: 80px 40px;
+    text-align: center;
+    border-radius: 3px;
+    background: none;
+    box-shadow: none;
+    margin: 10px 0 10px 0;
+    border: 1px solid #f0f0f0;
+    color: #000;
+
+    .title {
+        clr-icon {
+            width: 64px;
+            height: 64px;
+        }
+
+        img {
+            width: 250px;
+        }
+
+        > h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin: 0.5rem 0 0.2rem 0;
+        }
+    }
+
+    .actions {
+        > .btn {
+            margin: 0;
+        }
+    }
+
+    .description {
+        > p {
+            font-size: 0.7rem;
+            margin: 0.5rem 0 0.5rem 0;
+        }
+    }
+}
+
+.blankslate-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.ngx-remote-desktop-toolbar {
+    .ngx-remote-desktop-toolbar-items {
+        .ngx-remote-desktop-toolbar-item {
+            color: rgba(255, 255, 255, 0.9) !important;
+        }
+    }
+}
+
+.page-header {
+    width: 100%;
+    align-items: center;
+    background: #f4f5f7;
+    box-shadow: 0 -1px 0 #ccc inset;
+    padding: 15px;
+
+    .page-header-content {
+        max-width: 1024px;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .title {
+        padding-right: 1rem;
+        margin-right: auto;
+
+        h1 {
+            margin: 0;
+            padding: 0;
+            font-weight: 600;
+        }
+
+        p {
+            margin: 0 0 5px 0;
+        }
+    }
+
+    .actions {
+        .btn {
+            margin: 0;
+        }
+    }
+}
+
+.content-small-container {
+    max-width: 1024px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.main-container .content-container .content-area {
+    overflow-y: inherit;
+}
