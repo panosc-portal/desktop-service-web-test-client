@@ -16,6 +16,7 @@ import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/timeInterval';
 
 import {NgModule} from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import {MatButtonModule, MatDialogModule, MatFormFieldModule, MatSnackBarModule} from '@angular/material';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -37,16 +38,20 @@ import {ROUTING} from './app.routing';
 
 import {HttpClientModule} from '@angular/common/http';
 import { DesktopService } from './services';
-import { InstanceComponent } from './components';
+import { InstanceComponent, ClipboardComponent, KeyboardComponent, KeyboardShortcutsComponent } from './components';
 
 @NgModule({
     declarations: [
         AppComponent,
         FileSizePipe,
         TimeDurationPipe,
-        InstanceComponent
+        InstanceComponent,
+        ClipboardComponent,
+        KeyboardComponent,
+        KeyboardShortcutsComponent
     ],
     imports: [
+        FormsModule,
         BrowserModule,
         RouterModule,
         BrowserAnimationsModule,
