@@ -2,8 +2,8 @@ export const environment = {
     production: true,
     servers: {
         vdi: {
-            url: 'http://localhost',
-            path: '/ws/vdi'
+            url: null,
+            path: '/desktop/ws'
         }
     },
 };

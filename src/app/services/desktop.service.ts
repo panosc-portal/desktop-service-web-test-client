@@ -1,15 +1,17 @@
 import 'rxjs/add/operator/map';
-import {Injectable} from '@angular/core';
+import {Injectable, Inject} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {HttpClient} from '@angular/common/http';
 import {SocketIOTunnel} from '@illgrenoble/guacamole-common-js';
 import {environment} from 'environments/environment';
 import { ActivatedRoute } from '@angular/router';
+import {DOCUMENT} from '@angular/platform-browser';
 
 @Injectable()
 export class DesktopService {
     constructor(private http: HttpClient,
-                private route: ActivatedRoute) {
+                private route: ActivatedRoute,
+                @Inject(DOCUMENT) private document: Document) {
     }
 
     /**
@@ -34,7 +36,13 @@ export class DesktopService {
      * @returns SocketIOTunnel
      */
     createRemoteDesktopTunnel(): SocketIOTunnel {
-        const {url, path} = environment.servers.vdi;
+        let {url, path} = environment.servers.vdi;
+
+        // If url null, use the current host and protocol
+        if (url == null) {
+            url = `${this.document.location.protocol}//${this.document.location.hostname}`;
+        }
+
         const connectionOptions = {
             'force new connection': true,
             'reconnection': false,
