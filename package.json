@@ -5,7 +5,8 @@
   "angular-cli": {},
   "scripts": {
     "start": "ng serve --disable-host-check",
-    "build": "ng build --prod"
+    "build": "ng build --prod",
+    "preinstall": "npx npm-force-resolutions"
   },
   "private": true,
   "dependencies": {
@@ -62,5 +63,10 @@
     "typescript": "3.2.4",
     "typings": "^1.4.0",
     "webdriver-manager": "^12.0.6"
+  },
+  "resolutions": {
+    "minimist": ">=1.2.2",
+    "serialize-javascript": ">=2.1.1",
+    "set-value": ">=2.0.1"
   }
 }
